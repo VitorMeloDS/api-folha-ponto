@@ -1,28 +1,23 @@
-import express, { Request, Response } from 'express';
-import 'dotenv/config';
+import { Router, Request, Response } from 'express';
 import FolhaPontoController from '../http/controller/folhaPontoController';
 
-// Porta do servidor
-const PORT = process.env.PORT || 4000;
+const router = Router();
 
-// Host do servidor
-const HOSTNAME = process.env.HOSTNAME || 'http://localhost';
+// Router folha de ponto
+router.get('/folha-ponto', (req: Request, res: Response) => {
+  const consulta = new FolhaPontoController();
+  consulta.consultaSemana(req, res);
+});
 
-// App Express
-const app = express();
-
-// Endpoint raiz
-app.get('/folha-ponto', (req: Request, res: Response) => {
-  const routerPonto = new FolhaPontoController();
-  routerPonto.consultaSemana(req, res);
+// Router escreve dados
+router.post('/salva-dado', (req: Request, res: Response) => {
+  const salvar = new FolhaPontoController();
+  salvar.salvarSemana(req, res);
 });
 
 // Resposta padrão para quaisquer outras requisições:
-app.use((req: Request, res: Response) => {
-  res.status(404).json({ message: 'Essa Rota não existe por favor verifique!'})
+router.use((req: Request, res: Response) => {
+  res.status(404).send('Essa Rota não existe por favor verifique se está correta!');
 });
 
-// Inicia o sevidor
-app.listen(PORT, () => {
-  console.log(`Servidor rodando com sucesso ${HOSTNAME}:${PORT}`)
-});
+export const apiRouter: Router = router;
