@@ -1,4 +1,4 @@
-import 'dotenv/config';
+import 'dotenv/config'
 
 const knexConfig = {
   client: 'mysql2',
@@ -7,9 +7,9 @@ const knexConfig = {
     port: process.env.DB_PORT as unknown as number,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    database: process.env.DB_NAME
   },
-  pool: { min: 0, max: 3 },
-};
+  pool: { min: 0, max: 3 }
+}
 
-export default knexConfig;
+export default knexConfig
