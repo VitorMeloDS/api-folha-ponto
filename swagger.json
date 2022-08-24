@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "38a0ae02-15ac-4bda-9307-740a22012175",
+		"name": "api-ponto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19929254"
+	},
+	"item": [
+		{
+			"name": "login user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "vitor.melo",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:2022/login",
+					"host": [
+						"localhost"
+					],
+					"port": "2022",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "salvar semana",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id_mes_usuario\": 1,\r\n    \"id_usuario\": 1,\r\n    \"dia\": \"segunda-feira\",\r\n    \"horas_trabalhadas\": \"8.5 horas\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:2022/salvar-dados",
+					"host": [
+						"localhost"
+					],
+					"port": "2022",
+					"path": [
+						"salvar-dados"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
