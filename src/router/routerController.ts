@@ -10,7 +10,7 @@ router.get('/folha-ponto', (req: Request, res: Response) => {
 })
 
 // Router escreve dados
-router.post('/salva-dado', (req: Request, res: Response) => {
+router.post('/salvar-dados', (req: Request, res: Response) => {
   const salvar = new FolhaPontoController()
   salvar.salvarSemana(req, res)
 })

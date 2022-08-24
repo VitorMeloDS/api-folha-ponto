@@ -30,7 +30,7 @@ class App {
   // * Inicialização da API
   public server () {
     this.app.listen(this.port, () => {
-      console.log(`Servidor rodando com sucesso ${this.hostname}:${this.port}`)
+      console.log(`Servidor rodando com sucesso ${this.hostname}:${this.port} 🚀`)
     })
   }
 }
