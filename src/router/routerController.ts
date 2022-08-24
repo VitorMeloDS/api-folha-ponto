@@ -1,12 +1,13 @@
 import { Router, Request, Response } from 'express'
-import FolhaPontoController from '../http/controller/folhaPontoController'
+import { FolhaPontoController } from '../http/controller/folhaPontoController'
+import { LoginControler } from '../http/controller/loginController'
 
 const router = Router()
 
 // Router folha de ponto
-router.get('/folha-ponto', (req: Request, res: Response) => {
-  const consulta = new FolhaPontoController()
-  consulta.consultaSemana(req, res)
+router.get('/login', (req: Request, res: Response) => {
+  const consulta = new LoginControler()
+  consulta.authentication(req, res)
 })
 
 // Router escreve dados
