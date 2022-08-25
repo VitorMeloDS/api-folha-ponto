@@ -3,6 +3,8 @@ import bodyParser from 'body-parser'
 import 'dotenv/config'
 import { apiRouter } from './router/routerController'
 import cors from 'cors'
+import swaggerUi from 'swagger-ui-express'
+const swaggerDocument = require('../swagger.json')
 
 class App {
   private app: express.Application = express()
@@ -15,16 +17,21 @@ class App {
     this.routes()
   }
 
-  // * Routes
-  private routes () {
-    this.app.use(apiRouter)
-  }
-
   // * Libera acesso para outras aplicações
   private middlewares () {
+    this.app.use(
+      '/api-docs',
+      swaggerUi.serve,
+      swaggerUi.setup(swaggerDocument)
+    )
     this.app.use(bodyParser.urlencoded({ extended: true }))
     this.app.use(bodyParser.json())
     this.app.use(cors())
+  }
+
+  // * Routes
+  private routes () {
+    this.app.use(apiRouter)
   }
 
   // * Inicialização da API
