@@ -1,20 +1,14 @@
 import { Router, Request, Response } from 'express'
-import { FolhaPontoController } from '../http/controller/folhaPontoController'
-import { LoginControler } from '../http/controller/loginController'
+import { login } from './routerLogin'
+import { salvarSemana } from './routerSalvaSemana'
 
 const router = Router()
 
 // Router folha de ponto
-router.get('/login', (req: Request, res: Response) => {
-  const consulta = new LoginControler()
-  consulta.authentication(req, res)
-})
+router.use('/login', login)
 
 // Router escreve dados
-router.post('/salvar-dados', (req: Request, res: Response) => {
-  const salvar = new FolhaPontoController()
-  salvar.salvarSemana(req, res)
-})
+router.use('/salvar-semana', salvarSemana)
 
 // Resposta padrão para quaisquer outras requisições:
 router.use((req: Request, res: Response) => {
