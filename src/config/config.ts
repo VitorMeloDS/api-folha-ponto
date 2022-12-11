@@ -1,4 +1,4 @@
-import 'dotenv/config'
+import 'dotenv/config';
 
 const knexConfig = {
   client: 'mysql2',
@@ -10,6 +10,6 @@ const knexConfig = {
     database: process.env.DB_NAME
   },
   pool: { min: 0, max: 3 }
-}
+};
 
-export default knexConfig
+export default knexConfig;
